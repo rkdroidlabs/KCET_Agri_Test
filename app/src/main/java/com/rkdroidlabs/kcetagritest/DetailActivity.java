@@ -1,12 +1,16 @@
 package com.rkdroidlabs.kcetagritest;
 
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -28,7 +32,7 @@ public class DetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         webView.setVisibility(View.INVISIBLE);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setAppCacheMaxSize( 5 * 1024 * 1024 ); // 5MB
+        webView.getSettings().setAppCacheMaxSize( 50 * 1024 * 1024 ); // 50MB
         webView.getSettings().setAppCachePath( getApplicationContext().getCacheDir().getAbsolutePath() );
         webView.getSettings().setAllowFileAccess( true );
         webView.getSettings().setAppCacheEnabled( true );
@@ -38,13 +42,27 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
+                Toast.makeText(DetailActivity.this, "Page Loading", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return false;
+            }
+
+            @TargetApi(Build.VERSION_CODES.N)
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                view.loadUrl(request.getUrl().toString());
+                return true;
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 progressBar.setVisibility(View.GONE);
-                webView.setVisibility(View.VISIBLE);}
+                webView.setVisibility(View.VISIBLE);
+            }
 
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {

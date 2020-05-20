@@ -1,7 +1,9 @@
 package com.rkdroidlabs.kcetagritest;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -11,6 +13,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,18 +39,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = (RecyclerView) findViewById(R.id.PostList);
+        recyclerView = findViewById(R.id.PostList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        progress = (SpinKitView) findViewById(R.id.spin_kit);
+        progress = findViewById(R.id.spin_kit);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             setUpToolbar();
-            navigationView = (NavigationView) findViewById(R.id.navigation_menu);
+            navigationView = findViewById(R.id.navigation_menu);
             navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                     switch (menuItem.getItemId()) {
+                        case R.id.nav_contact:
+                            Toast.makeText(MainActivity.this, "Email at rkdroidlabs@yahoo.com", Toast.LENGTH_SHORT).show();
+                            break;
                         case R.id.nav_home:
+                            Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
                             break;
                     }
                     return false;
@@ -56,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
             getData();
         }
     }
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void setUpToolbar() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
@@ -66,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
     }
-
     private void getData ()
     {
         progress.setVisibility(View.VISIBLE);
@@ -75,15 +80,45 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<PostList> call, Response<PostList> response) {
                 PostList list = response.body();
+                assert list != null;
                 recyclerView.setAdapter(new PostAdapter(MainActivity.this, list.getItems()));
+                Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 progress.setVisibility(View.GONE);
             }
-
             @Override
             public void onFailure(Call<PostList> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Error Occured", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(MainActivity.this, "No Internet Connection", Toast.LENGTH_LONG).show();
             }
         });
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.share_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case R.id.nav_share:
+                Intent i = new Intent(
+                        android.content.Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(
+                        android.content.Intent.EXTRA_TEXT, "AGRI MASTER https://play.google.com/store/apps/details?id=com.rkdroidlabs.kcetagritest");
+                startActivity(Intent.createChooser(
+                        i,
+                        "Share Via"));
+                break;
+        }
+        Toast.makeText(getApplicationContext(), "Share", Toast.LENGTH_SHORT).show();
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+}
 }

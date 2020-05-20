@@ -4,9 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity"
-    android:background="@drawable/back">
+    tools:context=".SplashActivity">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentTop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/naturesplash"
+        android:layout_marginTop="40dp"/>
 
+    <TextView
+        android:id="@+id/texting1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/animation"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="-60dp"
+        android:text="AGRI MASTER"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="50sp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Learn for Future..."
+        android:layout_alignBottom="@+id/texting1"
+        android:layout_marginBottom="-30dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:textColor="#000"
+        />
 </RelativeLayout>

@@ -54,6 +54,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
                 context.startActivity(intent);
             }
         }));
+
     }
 
     @Override
@@ -67,8 +68,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
-            postImage = (ImageView) itemView.findViewById(R.id.postImage);
-            postTitle = (TextView) itemView.findViewById(R.id.postTitle);
+            postImage = itemView.findViewById(R.id.postImage);
+            postTitle = itemView.findViewById(R.id.postTitle);
         }
     }
 }

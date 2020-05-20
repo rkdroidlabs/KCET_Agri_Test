@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorGreen">#4CAF50</color>
+    <color name="cardColor">#FAF7DB</color>
+    <color name="scrollbackground">#F6EFA4</color>
+    <color name="lightgreen">#E5FFC8</color>
 </resources>
