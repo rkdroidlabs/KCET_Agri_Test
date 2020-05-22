@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "986316954630",
+    "firebase_url": "https://agrimaster2020-889c0.firebaseio.com",
+    "project_id": "agrimaster2020-889c0",
+    "storage_bucket": "agrimaster2020-889c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986316954630:android:31bc79c1340475cbc2f787",
+        "android_client_info": {
+          "package_name": "com.rkdroidlabs.kcetagritest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986316954630-bvtpv1p58ers9iuskfali79vhepkegsi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rkdroidlabs.kcetagritest",
+            "certificate_hash": "e667d96ba2e2eb348dfd77e8bd449ac25f54eff3"
+          }
+        },
+        {
+          "client_id": "986316954630-5itd196nn22kahi42qcualuhpc6pvi4d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDn1Q1GJcd5BysLyM5H7bAeOKbctVK_0Tk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986316954630-5itd196nn22kahi42qcualuhpc6pvi4d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

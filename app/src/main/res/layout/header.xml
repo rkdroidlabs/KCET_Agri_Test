@@ -4,7 +4,7 @@
     android:layout_height="190dp"
     android:orientation="vertical"
     android:padding="25dp"
-    android:background="@color/colorGreen"
+    android:background="@color/colorPrimary"
     style="@style/ThemeOverlay.AppCompat.Dark">
     <ImageView
         android:contentDescription="@string/logo_tag"

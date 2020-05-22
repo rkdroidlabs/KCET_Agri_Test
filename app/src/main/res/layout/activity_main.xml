@@ -7,7 +7,7 @@
     android:id="@+id/drawerlayout"
     tools:context=".MainActivity"
     android:fitsSystemWindows="true"
-    android:background="@color/scrollbackground">
+    android:background="@color/cardColor">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,12 +19,33 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:background="@color/colorPrimary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/subtitle"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:background="@color/colorPrimary"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:id="@+id/PostList"
-            android:layerType="hardware">
+            android:id="@+id/PostList">
         </androidx.recyclerview.widget.RecyclerView>
 
         <com.github.ybq.android.spinkit.SpinKitView

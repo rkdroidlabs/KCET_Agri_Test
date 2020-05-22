@@ -25,14 +25,13 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        webView = (WebView) findViewById(R.id.detailView);
+        progressBar = findViewById(R.id.progressBar);
+        toolbar = findViewById(R.id.toolbar);
+        webView = findViewById(R.id.detailView);
 
         setSupportActionBar(toolbar);
         webView.setVisibility(View.INVISIBLE);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setAppCacheMaxSize( 50 * 1024 * 1024 ); // 50MB
         webView.getSettings().setAppCachePath( getApplicationContext().getCacheDir().getAbsolutePath() );
         webView.getSettings().setAllowFileAccess( true );
         webView.getSettings().setAppCacheEnabled( true );
@@ -62,6 +61,8 @@ public class DetailActivity extends AppCompatActivity {
                 super.onPageFinished(view, url);
                 progressBar.setVisibility(View.GONE);
                 webView.setVisibility(View.VISIBLE);
+                String javaScript ="javascript:(function() { var a= document.getElementsByTagName('header');a[0].hidden='true';})()";
+                webView.loadUrl(javaScript);
             }
 
             @Override

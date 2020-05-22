@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">AgriMaster</string>
+    <string name="app_name">AGRI MASTER</string>
     <string name="post_image">Post Image</string>
     <string name="post_title">Post Title</string>
     <string name="app_tag">Learn for Future</string>
     <string name="logo_tag">Logo</string>
     <string name="app_title">AGRI MASTER</string>
+    <string name="subtitle">A Complete Guide for Agriculture and Veterinary Entrance Exams</string>
+    <string name="share_title">Share</string>
 </resources>

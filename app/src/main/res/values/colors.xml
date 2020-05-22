@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#4CAF50</color>
-    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimary">#068A0B</color>
+    <color name="colorPrimaryDark">#0C610F</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="colorGreen">#4CAF50</color>
     <color name="cardColor">#FAF7DB</color>
     <color name="scrollbackground">#F6EFA4</color>
     <color name="lightgreen">#E5FFC8</color>
+    <color name="white">#FFFF</color>
 </resources>
